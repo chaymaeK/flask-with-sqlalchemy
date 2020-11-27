@@ -25,3 +25,9 @@ def hello():
 def get_many_product():
     products = db.session.query(Product).all()
     return many_product_schema.jsonify(products), 200
+
+
+@app.route(f'{BASE_URL}/products/<int:id>'), methods=['GET'])
+def get_single_product('id'):
+    product = db.session.query(Product).get(id)
+    return get_single_product(id), 200
